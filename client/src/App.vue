@@ -15,5 +15,9 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+#client-app {
+  text-align: center;
+  width: 100%;
+}
 </style>
