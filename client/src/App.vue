@@ -1,7 +1,9 @@
 <template>
   <div id="client-app">
     <Header />
-    <router-view></router-view>
+    <div class="router-view">
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 
@@ -9,6 +11,10 @@
 import Header from './components/Header'
 export default {
   name: 'app',
+  data() {
+    return {
+    }
+  },
   components: {
     Header,
   }
@@ -17,7 +23,11 @@ export default {
 
 <style lang="scss" scoped>
 #client-app {
-  text-align: center;
   width: 100%;
+
+  .router-view{
+    margin: auto;
+    width: 90%;
+  }
 }
 </style>

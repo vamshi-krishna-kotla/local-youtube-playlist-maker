@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div class="createNew">
 		<h1>{{this.name}}</h1>
 	</div>
 </template>
@@ -16,5 +16,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.createNew {
+	display: block;
+}
 </style>
