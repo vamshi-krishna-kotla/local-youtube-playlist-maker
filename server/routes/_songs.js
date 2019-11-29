@@ -2,24 +2,28 @@ const router = require('express').Router();
 const songList = {
 	list : [
 		{
-			'song': 'bohemian rhapsody',
 			'artist': 'Queen',
-			'link': 'https://www.youtube.com/embed/fJ9rUzIMcZQ'
+			'genre': ['Classic', 'Rock'],
+			'link': 'https://www.youtube.com/embed/fJ9rUzIMcZQ',
+			'song': 'bohemian rhapsody'
 		},
 		{
-			'song': 'believer',
 			'artist': 'Imagine Dragons',
-			'link': 'https://www.youtube.com/embed/7wtfhZwyrcc'
+			'genre': ['Pop', 'Rock', 'Dance', 'Electronic'],
+			'link': 'https://www.youtube.com/embed/7wtfhZwyrcc',
+			'song': 'believer'
 		},
 		{
-			'song': 'thunder',
 			'artist': 'Imagine Dragons',
-			'link': 'https://www.youtube.com/embed/fKopy74weus'
+			'genre': ['Rock‎', '‎Heavy metal'],
+			'link': 'https://www.youtube.com/embed/fKopy74weus',
+			'song': 'thunder'
 		},
 		{
-			'song': 'we will rock you',
 			'artist': 'Queen',
-			'link': 'https://www.youtube.com/embed/-tJYN-eG1zk'
+			'genre': ['Arena', 'Rock'],
+			'link': 'https://www.youtube.com/embed/-tJYN-eG1zk',
+			'song': 'we will rock you'
 		},
 	]
 };
