@@ -28,7 +28,9 @@ const store = new Vuex.Store({
         
     },
     mutations: {
-        
+        addNewSong( state, payload) {
+			state.songs.push(payload);
+		}
     },
     getters: {
 
