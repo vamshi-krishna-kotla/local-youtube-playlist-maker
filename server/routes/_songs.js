@@ -50,14 +50,34 @@ router.get('/:id', (req,res) => {
 });
 
 router.post('/', (req,res) => {
-	console.log(req.body);
-
-	res.send(req.body);
+	songList.list.push(req.body);
+	res.send(songList);
 	res.end();
 });
 
-router.put('/:id', (req,res) => {});
+router.put('/:id', (req,res) => {
+	var id = parseInt(req.params.id);
+	if(songList.list.length > id) {
+		
+		songList.list[id] = req.body;
+	}
+	else {
+		res.status(404).send(`<h2>Song with id:${id} not found</h2>`);
+	}
+	res.end();
+});
 
-router.delete('/:id', (req,res) => {});
+router.delete('/:id', (req,res) => {
+	var id = parseInt(req.params.id);
+	if(songList.list.length > id) {
+		
+		songList.list.splice(id,1);
+		console.log(id);
+	}
+	else {
+		res.status(404).send(`<h2>Song with id:${id} not found</h2>`);
+	}
+	res.end();
+});
 
 module.exports =  router;
