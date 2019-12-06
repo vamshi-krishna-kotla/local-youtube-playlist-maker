@@ -2,7 +2,7 @@
 	<div class="myMusic">
 		<h1>{{this.name}}</h1>
 		<ul class="song-list">
-			<li v-for="song in songs" v-bind:key="song">{{song.toUpperCase()}}</li>
+			<li v-for="(song,index) in songs" v-bind:key="index">{{song.toUpperCase()}}</li>
 		</ul>
 	</div>
 </template>
