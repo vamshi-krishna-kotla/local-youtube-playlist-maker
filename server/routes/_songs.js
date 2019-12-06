@@ -1,4 +1,6 @@
 const router = require('express').Router();
+const Joi = require('@hapi/joi');
+
 const songList = {
 	list : [
 		{
@@ -30,12 +32,13 @@ const songList = {
 
 router.get('/', (req,res) => {
 	if(Object.entries(songList).length !== 0) {
-		res.status(200).end(JSON.stringify(songList));
+		res.status(200).send(songList);
 	}
 	else {
 		res.send(`<h2>No Data!</h2>`);
-		res.end();
 	}
+
+	res.end();
 });
 
 router.get('/:id', (req,res) => {
@@ -46,38 +49,64 @@ router.get('/:id', (req,res) => {
 	else {
 		res.status(404).send(`<h2>Song with id:${id} not found</h2>`);
 	}
+
 	res.end();
 });
 
 router.post('/', (req,res) => {
-	songList.list.push(req.body);
-	res.send(songList);
+	var {error, value} = validateSong(req.body);
+	if(!error) {
+		songList.list.push(value);
+		res.send(songList);
+	}
+	else {
+		res.send(error.details[0].message);
+	}
+
 	res.end();
 });
 
 router.put('/:id', (req,res) => {
 	var id = parseInt(req.params.id);
 	if(songList.list.length > id) {
-		
-		songList.list[id] = req.body;
+		var {error,value} = validateSong(req.body);
+		if(!error) {
+			songList.list[id] = value;
+			res.send(value);
+		}
+		else {
+			res.send(error.details[0].message);
+		}
 	}
 	else {
 		res.status(404).send(`<h2>Song with id:${id} not found</h2>`);
 	}
+
 	res.end();
 });
 
 router.delete('/:id', (req,res) => {
 	var id = parseInt(req.params.id);
 	if(songList.list.length > id) {
-		
 		songList.list.splice(id,1);
-		console.log(id);
+		res.send(songList);
 	}
 	else {
 		res.status(404).send(`<h2>Song with id:${id} not found</h2>`);
 	}
+
 	res.end();
 });
 
 module.exports =  router;
+
+function validateSong(song) {
+	const schema = Joi.object({
+		'artist': Joi.string().alphanum().min(3).required(),
+		'genre': Joi.array().items(Joi.string().min(3).required()).sparse(),
+		'link': Joi.string().uri(),
+		'song': Joi.string().alphanum().min(3).required()
+	})
+
+	return schema.validate(song);
+}
