@@ -49,7 +49,12 @@ router.get('/:id', (req,res) => {
 	res.end();
 });
 
-router.post('/', (req,res) => {});
+router.post('/', (req,res) => {
+	console.log(req.body);
+
+	res.send(req.body);
+	res.end();
+});
 
 router.put('/:id', (req,res) => {});
 
