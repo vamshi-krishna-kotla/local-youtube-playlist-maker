@@ -53,25 +53,18 @@ export default {
 	data() {
 		return {
 			name: 'CreateNew Component',
-			genreList: [
-				{name:'Classic',isSelected:false},
-				{name:'Rock',isSelected:false},
-				{name:'Pop',isSelected:false},
-				{name:'‎Heavy metal',isSelected:false},
-				{name:'Dance',isSelected:false},
-				{name:'Electronic',isSelected:false},
-				{name:'Arena',isSelected:false},
-				{name:'Reggae',isSelected:false},
-				{name:'Jazz',isSelected:false},
-				{name:'Folk',isSelected:false},
-				{name:'Blues',isSelected:false},
-				{name:'Rap',isSelected:false}
-			],
+			genreList: [],
 			songArtist:'',
 			songGenre: [],
 			songName: '',
 			songURL: '',
 		}
+	},
+	mounted() {
+		var _this = this;
+		this.$store.state.genres.forEach( genre => {
+			_this.genreList.push({name: genre,isSelected: false});
+		});
 	},
 	methods: {
 		addNewSong() {

@@ -6,6 +6,12 @@ Vue.use(Vuex);
 var store = new Vuex.Store({
     state: {
         songs: [],
+        genres: [
+            'Classic', 'Rock', 'Pop',
+            'Heavy metal', 'Electronic', 'Arena',
+            'Reggae', 'Jazz',
+            'Folk', 'Blues', 'Rap'
+        ]
     },
     actions: {
         
