@@ -28,5 +28,5 @@ app.get('/', ( req, res ) => {
 app.use('/songs', songsRouter);
 
 app.listen( PORT, () => {
-	console.log(`Server running at port: ${PORT}`);
+	console.log(`Server running at http://localhost:${PORT}/`);
 });

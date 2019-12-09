@@ -1,0 +1,32 @@
+[
+	{
+		"artist":"Queen",
+		"genre":["Classic","Rock"],
+		"link":"https://www.youtube.com/embed/fJ9rUzIMcZQ",
+		"song":"bohemian rhapsody"
+	},
+	{
+		"artist":"Imagine Dragons",
+		"genre":["Pop","Rock","Dance","Electronic"],
+		"link":"https://www.youtube.com/embed/7wtfhZwyrcc",
+		"song":"believer"
+	},
+	{
+		"artist":"Imagine Dragons",
+		"genre":["Rock","Heavy metal"],
+		"link":"https://www.youtube.com/embed/fKopy74weus",
+		"song":"thunder"
+	},
+	{
+		"artist":"Queen",
+		"genre":["Arena","Rock"],
+		"link":"https://www.youtube.com/embed/-tJYN-eG1zk",
+		"song":"we will rock you"
+	},
+	{
+		"artist":"asdfghj",
+		"genre":["Pop","Electronic"],
+		"link":"https://www.youtube.com/embed/7wtfhZwyrcc",
+		"song":"1212"
+	}
+]
