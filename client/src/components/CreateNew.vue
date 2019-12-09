@@ -6,17 +6,29 @@
 			<tbody>
 				<tr>
 					<td colspan="2">
-						<input placeholder="Name" type="text" v-model="songName"/>
+						<input 
+							placeholder="Name" 
+							type="text" 
+							v-model="songName"
+						/>
 					</td>
 				</tr>
 				<tr>
 					<td colspan="2">
-						<input placeholder="URL" type="text" v-model="songURL"/>
+						<input 
+							placeholder="URL" 
+							type="text" 
+							v-model="songURL"
+						/>
 					</td>
 				</tr>
 				<tr>
 					<td colspan="2">
-						<input placeholder="Artist" type="text" v-model="songArtist"/>
+						<input 
+							placeholder="Artist" 
+							type="text" 
+							v-model="songArtist"
+						/>
 					</td>
 				</tr>
 				<tr>
@@ -29,7 +41,12 @@
 						>
 							{{genre.name}}
 						</span>
-						<button :class="['reset-genres']" @click="resetAllGenres">Reset</button>
+						<button 
+							:class="['reset-genres']" 
+							@click="resetAllGenres"
+						>
+							Reset
+						</button>
 					</td>
 				</tr>
 				<tr>

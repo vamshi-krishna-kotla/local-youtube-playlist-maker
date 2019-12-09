@@ -1,19 +1,28 @@
 <template>
 	<div class="myMusic">
-		<h1>{{this.name}}</h1>
 		<ul class="song-list">
-			<li v-for="(item,index) in songs" v-bind:key="index">{{item.song.toUpperCase()}}</li>
+			<li 
+				v-for="(item,index) in songs" 
+				:key="index"
+			>
+				<Song :song=item />
+			</li>
 		</ul>
 	</div>
 </template>
 
 <script>
+import Song from './SongComponent.vue';
+
 export default {
 	name: 'my-music',
 	data() {
 		return {
 			name: 'MyMusic Component',
 		}
+	},
+	components:{
+		Song,
 	},
 	computed: {
 		songs() {
