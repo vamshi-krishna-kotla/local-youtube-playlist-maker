@@ -8,7 +8,10 @@
 </template>
 
 <script>
-import Header from './components/Header'
+import axios from 'axios';
+
+import Header from './components/Header';
+
 export default {
   name: 'app',
   data() {
@@ -17,6 +20,12 @@ export default {
   },
   components: {
     Header,
+  },
+  mounted() {
+    var _this = this;
+    axios.get('http://localhost:3000/songs').then( response => {
+      _this.$store.state.songs = response.data.list;
+    });
   }
 }
 </script>

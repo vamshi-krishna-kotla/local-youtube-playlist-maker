@@ -75,7 +75,6 @@ export default {
 	},
 	methods: {
 		addNewSong() {
-			//methos to add a new song to state.songs
 			this.$store.commit('addNewSong',{
 				'song':this.songName,
 				'yUrl':this.songURL

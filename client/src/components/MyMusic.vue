@@ -2,7 +2,7 @@
 	<div class="myMusic">
 		<h1>{{this.name}}</h1>
 		<ul class="song-list">
-			<li v-for="(song,index) in songs" v-bind:key="index">{{song.toUpperCase()}}</li>
+			<li v-for="(item,index) in songs" v-bind:key="index">{{item.song.toUpperCase()}}</li>
 		</ul>
 	</div>
 </template>
@@ -13,14 +13,12 @@ export default {
 	data() {
 		return {
 			name: 'MyMusic Component',
-			songs: []
 		}
 	},
-	mounted() {
-		var _this = this;
-		this.$store.state.songs.forEach(song => {
-			_this.songs.push(song.song);
-		});
+	computed: {
+		songs() {
+			return this.$store.state.songs;
+		}
 	}
 }
 </script>
