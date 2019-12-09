@@ -111,14 +111,14 @@ function validateSong(song) {
 
 function checkData() {
 	if(!songList.available) {
-		songList.list = JSON.parse(fs.readFileSync(__dirname+'/source.json', 'utf8'));
+		songList.list = JSON.parse(fs.readFileSync('./source/source.json', 'utf8'));
 		songList.available = !songList.available;
 	}
 }
 
 async function updateSource() {
 	// rewrite source file with songList.list here
-	await fs.writeFile(__dirname+'/source.json', JSON.stringify(songList.list), (err) => {
+	await fs.writeFile('./source/source.json', JSON.stringify(songList.list), (err) => {
 		console.log(err);
 	})
 }
