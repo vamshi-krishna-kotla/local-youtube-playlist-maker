@@ -9,7 +9,7 @@
 			<span
 				v-for="genre in genres"
 				:key="genre"
-				:class="['genre']"
+				:class="['song-genre', (song.genre.indexOf(genre) > -1) ? 'isSelected' :'']"
 			>
 				{{genre}}
 			</span>
