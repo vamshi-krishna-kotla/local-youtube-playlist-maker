@@ -28,7 +28,12 @@ router.get('/', (req,res) => {
 router.get('/:song', (req,res) => {
 	var song = req.params.song;
 	Song.findOne({ 'song': song }).then( (data) => {
-		res.send(data);
+		if(!data) {
+			res.status(404).send(`<h1>"${song}" not found</h1>`)
+		}
+		else {			
+			res.status(200).send(data);
+		}
 		res.end();
 	})
 });
@@ -59,8 +64,12 @@ router.patch('/:song', ( req, res ) => {
 			"link": value.link,
 			"song": value.song
 		}, { new: true }).then( data => {
-			res.send(data);
-			res.end();
+			if(!data) {
+				res.status(404).send(`<h1>"${song}" not found</h1>`)
+			}
+			else {			
+				res.status(200).send(data);
+			}
 		})
 	}
 	else {
@@ -74,8 +83,12 @@ router.delete('/:song', (req,res) => {
 	var song = req.params.song;
 	
 	Song.findOneAndDelete({ 'song': song }).then( (data) => {
-		res.send(data);
-		res.end();
+		if(!data) {
+			res.status(404).send(`<h1>"${song}" not found</h1>`)
+		}
+		else {			
+			res.status(200).send(data);
+		}
 	})
 
 });
