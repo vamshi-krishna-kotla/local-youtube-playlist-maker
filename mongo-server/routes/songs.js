@@ -6,7 +6,8 @@ const Song = require('../models/songModel');
 
 mongoose.connect('mongodb://localhost:27017/vue-node-songs', { 
 		useNewUrlParser: true, 
-		useUnifiedTopology: true 
+		useUnifiedTopology: true,
+		useFindAndModify: false
 	})
 	.then( () => {
 		console.log('Connected to mongo server!')
@@ -46,26 +47,36 @@ router.post('/', (req,res) => {
 	}
 });
 
-// ADD PATCH FUNCTIONALITY
-router.patch('/:song', (req,res) => {
+router.patch('/:song', ( req, res ) => {
 	
 	var song = req.params.song;
 
-	var {error,value} = validateSong(req.body);
+	var { error, value } = validateSong(req.body);
 	if(!error) {
-		// modify song here
+		Song.findOneAndUpdate({ 'song': song }, { 
+			"artist": value.artist,
+			"genre": value.genre,
+			"link": value.link,
+			"song": value.song
+		}, { new: true }).then( data => {
+			res.send(data);
+			res.end();
+		})
 	}
 	else {
 		res.send(error.details[0].message);
+		res.end();
 	}
-	res.end(`PATCH ${song}`);
 });
 
-//ADD DELETE FUNCTIONALITY
 router.delete('/:song', (req,res) => {
 	
 	var song = req.params.song;
-	res.end(`DELETE ${song}`);
+	
+	Song.findOneAndDelete({ 'song': song }).then( (data) => {
+		res.send(data);
+		res.end();
+	})
 
 });
 
