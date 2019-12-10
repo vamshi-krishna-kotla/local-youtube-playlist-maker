@@ -18,28 +18,35 @@ mongoose.connect('mongodb://localhost:27017/vue-node-songs', {
 
 
 router.get('/', (req,res) => {
-	//send all available data from mongo
-	res.end('GET');
+	Song.find().sort({ song: 1 }).then((data)=>{
+		res.send(data);
+		res.end();
+	})
 });
 
 router.get('/:song', (req,res) => {
-
 	var song = req.params.song;
-	// send one song from mongo
-	res.end('GET:song');
+	Song.findOne({ 'song': song }).then( (data) => {
+		res.send(data);
+		res.end();
+	})
 });
 
 router.post('/', (req,res) => {
 	var { error, value } = validateSong(req.body);
 	if(!error) {
-		res.send(addNewSong(value));
+		new Song(value).save().then( data => {
+			res.send(data);
+			res.end();
+		});
 	}
 	else {
 		res.send(error.details[0].message);
+		res.end();
 	}
-	res.end('POST');
 });
 
+// ADD PATCH FUNCTIONALITY
 router.patch('/:song', (req,res) => {
 	
 	var song = req.params.song;
@@ -54,6 +61,7 @@ router.patch('/:song', (req,res) => {
 	res.end(`PATCH ${song}`);
 });
 
+//ADD DELETE FUNCTIONALITY
 router.delete('/:song', (req,res) => {
 	
 	var song = req.params.song;
@@ -63,19 +71,13 @@ router.delete('/:song', (req,res) => {
 
 module.exports.songsRouter = router;
 
-function validateSong(song) {
+function validateSong( song ) {
 	const validateSongSchema = Joi.object({
 		'artist': Joi.string().min(3).required(),
-		'genre': Joi.array().items(Joi.string().alphanum().min(3).required()).sparse(),
+		'genre': Joi.array().items(Joi.string().min(3).required()).sparse(),
 		'link': Joi.string().uri(),
 		'song': Joi.string().min(3).required()
 	})
 
 	return validateSongSchema.validate(song);
-}
-
-async function addNewSong(song) {
-	var newSong = new Song(song);
-
-	return await newSong.save();
 }
