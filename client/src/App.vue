@@ -23,8 +23,9 @@ export default {
   },
   mounted() {
     var _this = this;
-    axios.get('http://localhost:3000/songs').then( response => {
-      _this.$store.state.songs = response.data.list;
+    var serverPort = 5000/*mongo server port */; /* 3000 for file server */
+    axios.get(`http://localhost:${serverPort}/songs`).then( response => {
+      _this.$store.state.songs = response.data; /**response.data.list if file server is used */
     });
   }
 }
