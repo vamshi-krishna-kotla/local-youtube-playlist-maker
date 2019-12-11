@@ -72,13 +72,16 @@
 
 				.addButton {
 					background: rgba($color: #09139e, $alpha: 0.8);
-					border: 0.5px #ced4da solid;
 					border-radius: 0.75rem;
 					color: #fff;
 					font-size: 1.25rem;
 					margin-top: 1.5rem;
 					padding: 1rem;
 					width: 55%;
+
+					&:focus {
+						outline: none;
+					}
 				}
 			}
 		}
