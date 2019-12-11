@@ -53,7 +53,6 @@
 					<td colspan=2>
 						<button
 							class="addButton"
-							@click="addNewSong"
 						>
 							Add song
 						</button>
@@ -84,12 +83,6 @@ export default {
 		});
 	},
 	methods: {
-		addNewSong() {
-			this.$store.commit('addNewSong',{
-				'song':this.songName,
-				'yUrl':this.songURL
-			});
-		},
 		resetAllGenres() {
 			this.genreList.forEach(genre => {
 				genre.isSelected = false;
