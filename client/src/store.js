@@ -23,11 +23,21 @@ var store = new Vuex.Store({
                 this.state.songs = result.data;
                 /** .data.list if file server is used */
             }
+        },
+        putNewSong( payload ) {
+            this.state.songs.push(payload.song);
         }
     },
     actions: {
         getSongs() {
             this.commit('getSongsFromServer');
+        },
+        putSong(newSong) {
+            /**
+             * gotta pass data to a mutation in the form of an object
+             * (even if the data is another object, it needs to be passed as a value with a valid key)!!
+             *  */
+            this.commit('putNewSong', { song: newSong });
         }
     },
     getters: {

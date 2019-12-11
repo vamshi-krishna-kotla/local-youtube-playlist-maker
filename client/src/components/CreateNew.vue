@@ -53,6 +53,7 @@
 					<td colspan=2>
 						<button
 							class="addButton"
+							@click="addNewSong"
 						>
 							Add song
 						</button>
@@ -64,6 +65,8 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
 	name: 'create-new',
 	data() {
@@ -71,7 +74,6 @@ export default {
 			name: 'CreateNew Component',
 			genreList: [],
 			songArtist:'',
-			songGenre: [],
 			songName: '',
 			songURL: '',
 		}
@@ -82,11 +84,34 @@ export default {
 			_this.genreList.push({name: genre,isSelected: false});
 		});
 	},
+	computed: {
+		songGenre() {
+			var list = [];
+			this.genreList.filter( genre => genre.isSelected === true ).forEach( element => {
+				element.isSelected === true ? list.push(element.name) : '';
+			});
+			return list;
+		}
+	},
 	methods: {
 		resetAllGenres() {
 			this.genreList.forEach(genre => {
 				genre.isSelected = false;
 			});
+		},
+		addNewSong() {
+			var newSong = {
+				"artist": this.songArtist,
+				"genre": this.songGenre,
+				"link": this.songURL,
+				"song": this.songName
+			}
+			var _this = this;
+			axios.post(`http://localhost:5000/songs`, newSong).then( (data) => {
+				if( typeof data === 'object') {
+					_this.$store.dispatch('putSong', data );
+				}
+			})
 		}
 	}
 }
