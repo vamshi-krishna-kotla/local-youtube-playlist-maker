@@ -14,6 +14,13 @@
 				{{genre}}
 			</span>
 		</div>
+		<div class="edit-song">
+			<button
+				:class="['edit-button']"
+			>
+				Edit
+			</button>
+		</div>
 	</div>
 </template>
 
