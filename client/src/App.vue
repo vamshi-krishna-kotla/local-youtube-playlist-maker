@@ -8,8 +8,6 @@
 </template>
 
 <script>
-import axios from 'axios';
-
 import Header from './components/Header';
 
 export default {
@@ -22,10 +20,9 @@ export default {
     Header,
   },
   mounted() {
-    var _this = this;
-    var serverPort = 5000/*mongo server port */; /* 3000 for file server */
-    axios.get(`http://localhost:${serverPort}/songs`).then( response => {
-      _this.$store.state.songs = response.data; /**response.data.list if file server is used */
+    this.$store.dispatch({
+      type: 'getSongs',
+      payload: {}
     });
   }
 }
