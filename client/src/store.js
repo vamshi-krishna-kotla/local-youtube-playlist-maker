@@ -14,6 +14,10 @@ var store = new Vuex.Store({
             'Heavy metal', 'Electronic', 'Arena',
             'Reggae', 'Jazz',
             'Folk', 'Blues', 'Rap'
+        ],
+        playlists: [
+            { title:'default-playlist', songs: ['thunder', 'believer'] },
+            { title:'another-default-playlist', songs: ['bohemian rhapsody', 'we will rock you'] }
         ]
     },
     mutations: {
