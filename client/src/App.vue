@@ -1,10 +1,10 @@
 <template>
-  <div id="client-app">
-    <Header />
-    <div class="router-view">
-      <router-view></router-view>
-    </div>
-  </div>
+	<div id="client-app">
+		<Header />
+		<div class="router-view">
+			<router-view></router-view>
+		</div>
+	</div>
 </template>
 
 <script>
