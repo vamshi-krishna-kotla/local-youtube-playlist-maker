@@ -1,6 +1,7 @@
 <template>
 	<div id="header-nav">
 		<router-link to='/'>Home</router-link>
+		<router-link to='/playlist'>Playlists</router-link>
 		<router-link to='/myMusic'>My music</router-link>
 		<router-link to='/createNew'>Create New</router-link>
 	</div>
