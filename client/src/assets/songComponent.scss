@@ -36,21 +36,54 @@
 		}
 	}
 	
-	.edit-song {
+	.song-optins {
 		display: flex;
 		flex-direction: row-reverse;
 		position: relative;
 
 		.edit-button {
-			background: rgba($color: #09139e, $alpha: 0.6);
+			background: rgba($color: #fff, $alpha: 0.6);
+			border: 0.5px solid rgba($color: #09139e, $alpha: 1);
 			border-radius: 0.25rem;
+			color: rgba($color: #09139e, $alpha: 1);
 			cursor: pointer;
 			font-size: 1rem;
 			margin: 0.25rem 1rem;
-			padding: 0.25rem 1rem;
+			padding: 0.35rem 1rem;
+			transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 
 			&:focus {
+				box-shadow: 0 0 0 0.2rem rgba($color: #09139e, $alpha: 0.5);
 				outline: none;
+			}
+			
+			&:hover {
+				background-color: #09139e;
+				border-color: #09139e;
+				color: #fff;
+			}
+		}
+		
+		.delete-button {
+			background: rgba($color: #fff, $alpha: 0.6);
+			border: 0.5px solid rgba($color: #dc3545, $alpha: 1);
+			border-radius: 0.25rem;
+			color: rgba($color: #dc3545, $alpha: 1);
+			cursor: pointer;
+			font-size: 1rem;
+			margin: 0.25rem 1rem;
+			padding: 0.35rem 1rem;
+			transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+
+			&:focus {
+				box-shadow: 0 0 0 0.2rem rgba($color: #dc3545, $alpha: 0.5);
+				outline: none;
+			}
+
+			&:hover {
+				background-color: #dc3545;
+				border-color: #dc3545;
+				color: #fff;
 			}
 		}
 	}

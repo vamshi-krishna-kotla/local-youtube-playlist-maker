@@ -14,11 +14,16 @@
 				{{genre}}
 			</span>
 		</div>
-		<div class="edit-song">
+		<div class="song-optins">
 			<button
 				:class="['edit-button']"
 			>
 				Edit
+			</button>
+			<button
+				:class="['delete-button']"
+			>
+				Delete
 			</button>
 		</div>
 	</div>
