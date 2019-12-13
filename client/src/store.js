@@ -4,7 +4,11 @@ import axios from 'axios';
 
 Vue.use(Vuex);
 
-const serverPort = 5000/* mongo server port */; /* 3000 for file server */
+/**
+ * mongo server port = 5000
+ * file server = 3000
+ */
+const serverPort = 5000;
 
 var store = new Vuex.Store({
     state: {
@@ -25,7 +29,10 @@ var store = new Vuex.Store({
             var result = (await axios.get(`http://localhost:${serverPort}/songs`));
             if( result.status === 200 ) {
                 this.state.songs = result.data;
-                /** .data.list if file server is used */
+                /** 
+                 * result.data.list - file server 
+                 * result.data - mongo server
+                 */
             }
         },
         putNewSong( payload ) {

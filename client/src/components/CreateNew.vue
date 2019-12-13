@@ -109,6 +109,10 @@ export default {
 			var _this = this;
 			axios.post(`http://localhost:5000/songs`, newSong).then( (data) => {
 				if( typeof data === 'object') {
+					/**
+					 * data = { new song } for mongo-server(5000)
+					 * data = { entire updated list } for file-server(3000)
+					 */
 					_this.$store.dispatch('putSong', data );
 				}
 			})
