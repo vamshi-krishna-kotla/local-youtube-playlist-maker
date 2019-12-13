@@ -1,8 +1,8 @@
 <template>
 	<div class="createNew">
-			<table class="newSongTable">
-				<thead>
-				</thead>
+		<table class="newSongTable">
+			<thead>
+			</thead>
 			<tbody>
 				<tr>
 					<td colspan="2">
@@ -115,7 +115,14 @@ export default {
 					 */
 					_this.$store.dispatch('putSong', data );
 				}
+				_this.resetAllValues();
 			})
+		},
+		resetAllValues() {
+			this.songArtist = '';
+			this.songName = '';
+			this.songURL = '';
+			this.resetAllGenres();
 		}
 	}
 }
