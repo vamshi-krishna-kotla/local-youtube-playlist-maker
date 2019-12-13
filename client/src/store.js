@@ -35,20 +35,13 @@ var store = new Vuex.Store({
                  */
             }
         },
-        putNewSong( payload ) {
-            this.state.songs.push(payload.song);
+        putNewSong( state, payload ) {
+            state.songs.push(payload.song);
         }
     },
     actions: {
         getSongs() {
             this.commit('getSongsFromServer');
-        },
-        putSong(newSong) {
-            /**
-             * gotta pass data to a mutation in the form of an object
-             * (even if the data is another object, it needs to be passed as a value with a valid key)!!
-             *  */
-            this.commit('putNewSong', { song: newSong });
         }
     },
     getters: {

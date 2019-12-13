@@ -107,13 +107,16 @@ export default {
 				"song": this.songName
 			}
 			var _this = this;
-			axios.post(`http://localhost:5000/songs`, newSong).then( (data) => {
-				if( typeof data === 'object') {
+			axios.post(`http://localhost:5000/songs`, newSong).then( (response) => {
+				if( typeof response.data === 'object') {
 					/**
 					 * data = { new song } for mongo-server(5000)
 					 * data = { entire updated list } for file-server(3000)
 					 */
-					_this.$store.dispatch('putSong', data );
+					_this.$store.commit('putNewSong', { 'song': response.data } );
+				}
+				else {
+					window.console.log(response.data);
 				}
 				_this.resetAllValues();
 			})
