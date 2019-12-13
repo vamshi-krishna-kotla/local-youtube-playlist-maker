@@ -17,6 +17,7 @@
 		<div class="song-options">
 			<button
 				:class="['edit-button']"
+				@click="displayEditTab=true"
 			>
 				Edit
 			</button>
@@ -26,14 +27,19 @@
 				Delete
 			</button>
 		</div>
+		
+		<EditSong :display="displayEditTab" :songToEdit="song" />
 	</div>
 </template>
 
 <script>
+import EditSong from './EditSong';
+
 export default {
 	data() {
 		return {
 			name: 'Song Component',
+			displayEditTab: false
 		}
 	},
 	props: {
@@ -53,6 +59,9 @@ export default {
 		genres() {
 			return this.$store.state.genres;
 		}
+	},
+	components: {
+		EditSong,
 	}
 }
 </script>
