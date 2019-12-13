@@ -2,6 +2,7 @@ const express = require('express');
 const morgan = require('morgan');
 const fs = require('fs');
 const pug = require('pug');
+const cors = require('cors');
 
 const songsRouter = require('./routes/_songs');
 
@@ -12,6 +13,7 @@ const appView = './views/app.pug';
 const app = express();
 
 app.use(morgan('dev'));
+app.use(cors());
 app.use(express.json());
 
 app.get('/', ( req, res ) => {
