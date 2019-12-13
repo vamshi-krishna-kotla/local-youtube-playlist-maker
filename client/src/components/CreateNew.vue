@@ -87,7 +87,7 @@ export default {
 	computed: {
 		songGenre() {
 			var list = [];
-			this.genreList.filter( genre => genre.isSelected === true ).forEach( element => {
+			this.genreList.forEach( element => {
 				element.isSelected === true ? list.push(element.name) : '';
 			});
 			return list;
