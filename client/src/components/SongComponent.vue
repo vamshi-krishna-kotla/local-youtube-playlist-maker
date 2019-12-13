@@ -14,7 +14,7 @@
 				{{genre}}
 			</span>
 		</div>
-		<div class="song-optins">
+		<div class="song-options">
 			<button
 				:class="['edit-button']"
 			>
