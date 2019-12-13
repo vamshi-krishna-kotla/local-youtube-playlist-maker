@@ -1,0 +1,71 @@
+.playlist-comp {
+	.playlists {
+		display: flex;
+		flex-direction: column;
+		list-style-type: none;
+		text-align: center;
+
+		.playlist-item {
+			border: 0.5px solid rgba($color: #09139e, $alpha: 0.5);
+			cursor: pointer;
+			margin: 0.5rem 1rem;
+			padding: 1rem;
+
+			&:hover {
+				box-shadow: 0 0.2rem 0.2rem rgba($color: #09139e, $alpha: 0.5);
+			}
+
+			.playlist-title {	
+				.title {
+					font-size: 1.25rem;
+				}
+			}
+
+			.playlist-content {
+				display: flex;
+				justify-content: space-between;
+				overflow: auto;
+
+				.playlist-content-song {
+					display: inline;
+					margin: 0.25rem 1rem;
+				}
+			}
+		}
+	}
+
+	.playlists-none {
+		color: rgba($color: #dc3545, $alpha: 1);
+		font-family: monospace;
+		text-align: center;
+	}
+
+	.playlist-create-new {
+		margin: 1rem 0.5rem;
+		font-family: monospace;
+		text-align: center;
+
+		.create-new {
+			background: rgba($color: #fff, $alpha: 0.6);
+			border: 2px solid rgba($color: #09139e, $alpha: 0.7);
+			border-radius: 0.25rem;
+			color: rgba($color: #09139e, $alpha: 1);
+			cursor: pointer;
+			font-size: 1rem;
+			margin: 0.25rem 1rem;
+			padding: 0.35rem 1rem;
+			transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+
+			&:focus {
+				box-shadow: 0 0 0 0.2rem rgba($color: #09139e, $alpha: 0.5);
+				outline: none;
+			}
+			
+			&:hover {
+				background-color: #09139e;
+				border-color: #09139e;
+				color: #fff;
+			}
+		}
+	}
+}

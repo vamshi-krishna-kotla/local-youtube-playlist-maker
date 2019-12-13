@@ -2,7 +2,7 @@
 	<div class="playlist-comp">
 		<ul class="playlists">
 			<li 
-				:class = "['playlist-item']"
+				class = playlist-item
 				v-for="(item, index) of this.playlists" 
 				:key="index"
 			>
@@ -16,53 +16,68 @@
 					class="playlist-content" 
 					v-if="displayPlaylist == index"
 				>
-					{{item.songs}}
+					<div 
+						v-for ="songItem in item.songs"
+						:key ="songItem"
+						class = "playlist-content-song"
+					>
+						<iframe :src ="findSong(songItem).link" ></iframe>
+					</div>
 				</div>
 			</li>
 		</ul>
+		<h1 
+			v-if="displayNoPlaylists"
+			class = "playlists-none"
+		>
+			No Playlists!!
+		</h1>
+		<div class="playlist-create-new">
+			<button 
+				class = "create-new"
+				@click ="createNew"
+			>
+				Create New Playlist
+			</button>
+		</div>
 	</div>
 </template>
 
 <script>
 export default {
-	name: 'PlaylistComponent',
+	name: 'playlist',
 	data() {
 		return {
+			name: 'Playlist Component',
 			displayPlaylist: -1,
 		}
 	},
 	computed: {
 		playlists() {
 			return this.$store.state.playlists;
+		},
+		displayNoPlaylists() {
+			if(this.playlists.length == 0) {
+				return true;
+			}
+			return false;
 		}
 	},
 	components: {
 	},
 	mounted() {
+	},
+	methods: {
+		findSong(songItem) {
+			return this.$store.state.songs.find( element => element.song == songItem)
+		},
+		createNew() {
+			alert('Create New Playlist');
+		}
 	}
 }
 </script>
 
 <style lang="scss" scoped>
-.playlists {
-	display: flex;
-	flex-direction: column;
-	list-style-type: none;
-	text-align: center;
-
-	.playlist-item {
-		border: 0.5px solid rgba($color: #09139e, $alpha: 0.5);
-		cursor: pointer;
-		margin: 0.5rem 1rem;
-		padding: 1rem;
-
-		&:hover {
-			box-shadow: 0 0.2rem 0.2rem rgba($color: #09139e, $alpha: 0.5);
-		}
-
-		.title {
-			font-size: 1.25rem;
-		}
-	}
-}
+	@import '../assets/playlistComp.scss';
 </style>
