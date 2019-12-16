@@ -1,0 +1,111 @@
+.edit-song-comp {
+	background: rgba(0, 0, 0, 0.6);
+	display: flex;
+	height: -webkit-fill-available;
+	left: 0;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 2;
+
+	.edit-song {
+		background: #fff;
+		border-radius: 1rem;
+		display: inline-flex;
+		flex-direction: column;
+		margin: auto;
+		padding: 2rem;
+		position: relative;
+		width: 50%;
+
+		input {
+			border: 1px solid #ced4da;
+			border-radius: .25rem;
+			color: #495057;
+			display: block;
+			font-size: 1rem;
+			line-height: 1.5;
+			margin: 1rem auto;
+			padding: .375rem .75rem;
+			transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+			width: 85%;
+
+			&:focus {
+				color: #495057;
+				background-color: #fff;
+				border-color: #80bdff;
+				outline: 0;
+				box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+			}
+		}
+
+		.genre-list {
+			position: relative;
+			text-align: center;
+			
+			.genre {
+				border: 0.5px solid rgba(9, 19, 158, 0.5);
+				border-radius: 0.75rem;
+				cursor: pointer;
+				display: inline-block;
+				font-size: 1rem;
+				margin: 0.25rem;
+				padding: 0.3rem;
+
+				&:hover {
+					background: rgba(10, 100, 200, 0.8);;
+					color: #fff;
+				}
+
+				&.isSelected {
+					background: rgba($color: #09139e, $alpha: 0.6);
+					color: #fff;
+				}
+			}
+		}
+			
+		.close {
+			color: #fff;
+			cursor: pointer;
+			font-size: 1.75rem;
+			position: absolute;
+			top: -3rem;
+			right: 0;
+		}
+		
+		.edit-button-container {
+			margin: 1.5rem 0 0;
+
+			.edit-button {
+				background: rgba($color: #fff, $alpha: 0.6);
+				border: 0.5px solid rgba($color: #28a745, $alpha: 1);
+				border-radius: 0.25rem;
+				color: #28a745;
+				cursor: pointer;
+				display: block;
+				font-size: 1.15rem;
+				margin: 0.5rem auto;
+				padding: 0.35rem 1rem;
+				transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+				width: 35%;
+
+				&:focus {
+					box-shadow: 0 0 0 0.2rem rgba($color: #28a745, $alpha: 0.5);
+					outline: none;
+				}
+				
+				&:hover {
+					background-color: #28a745;
+					border-color: #28a745;
+					color: rgba($color: #fff, $alpha: 1);
+				}
+			}
+
+			.edit-warning {
+				color: rgba($color: #ffc107, $alpha: 1);
+				display: block;
+				font-size: 1rem;
+			}
+		}
+	}
+}

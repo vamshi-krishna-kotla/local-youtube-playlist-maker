@@ -23,7 +23,10 @@
 					{{ genre.name }}
 				</span>
 			</div>
-			<button>Done</button>
+			<div class="edit-button-container">
+				<button class="edit-button">Done</button>
+				<span class="edit-warning"><b>NOTE: </b>Changes will be saved in the backend as well</span>
+			</div>
 		</div>
 	</div>
 </template>
@@ -77,64 +80,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.edit-song-comp {
-	background: rgba(0, 0, 0, 0.6);
-	display: flex;
-	height: -webkit-fill-available;
-	left: 0;
-	position: fixed;
-	top: 0;
-	width: 100%;
-	z-index: 2;
-
-	.edit-song {
-		background: #fff;
-		border-radius: 1rem;
-		display: inline-flex;
-		flex-direction: column;
-		margin: auto;
-		padding: 2rem;
-		position: relative;
-		width: 50%;
-
-		input {
-			margin: 1rem auto;
-			width: 85%;
-		}
-
-		.genre-list {
-			position: relative;
-			text-align: center;
-			
-			.genre {
-				border: 0.5px solid rgba(9, 19, 158, 0.5);
-				border-radius: 0.75rem;
-				cursor: pointer;
-				display: inline-block;
-				font-size: 1rem;
-				margin: 0.25rem;
-				padding: 0.3rem;
-
-				&:hover {
-					background: rgba(10, 100, 200, 0.8);;
-					color: #fff;
-				}
-
-				&.isSelected {
-					background: rgba($color: #09139e, $alpha: 0.6);
-					color: #fff;
-				}
-			}
-		}
-			
-		.close {
-			color: #fff;
-			cursor: pointer;
-			font-size: 1.75rem;
-			position: absolute;
-			top: -3rem;
-			right: 0;
-		}
-	}
-}
+	@import '../assets/editSong.scss';
 </style>
