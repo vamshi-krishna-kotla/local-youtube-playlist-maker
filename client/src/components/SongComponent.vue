@@ -64,6 +64,8 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 import EditSong from './EditSong';
 
 export default {
@@ -97,7 +99,15 @@ export default {
 	},
 	methods: {
 		deleteCurrentSong() {
-			alert(`DELETE ${this.song.song}`);
+			var _this = this;
+			axios.delete(`http://localhost:5000/songs/${_this.song.song}`).then( (response) => {
+				if(typeof response.data === "object") {
+					_this.$store.dispatch('deleteSong', { song: _this.song.song });
+				}
+				else {
+					window.console.log(response.data);
+				}
+			});
 		}
 	}
 }
