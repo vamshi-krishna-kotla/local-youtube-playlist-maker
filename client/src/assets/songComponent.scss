@@ -1,3 +1,36 @@
+.bounce-enter-active {
+	animation: bounce-in .5s;
+}
+.bounce-leave-active {
+	animation: bounce-in .5s reverse;
+}
+@keyframes bounce-in {
+	0% {
+		transform: scale(0);
+	}
+	50% {
+		transform: scale(1.5);
+	}
+	100% {
+		transform: scale(1);
+	}
+}
+
+.fade-enter-active {
+	animation: fade-in 0.75s;
+}
+.fade-leave-active {
+	animation: fade-in 0.75s reverse;
+}
+@keyframes fade-in {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
 .song-container {
 	position: relative;
 
@@ -84,6 +117,40 @@
 				background-color: #dc3545;
 				border-color: #dc3545;
 				color: #fff;
+			}
+		}
+	}
+	
+	.delete-confirmation {
+		background: rgba($color: #000, $alpha: 0.8);
+		color: #fff;
+		height: -webkit-fill-available;
+		left: 0;
+		padding: 2rem;
+		position: absolute;
+		top: 0;
+		width: -webkit-fill-available;
+
+		.delete-conf-content {
+			padding: 1rem;
+			text-align: center;
+
+			.delete-warning {
+				display: block;
+				font-family: monospace;
+				font-size: 2rem;
+				margin: 1rem auto;
+			}
+
+			.delete-btn-group {
+				.delete-yes, .delete-no {
+					border-radius: 0.5rem;
+					font-family: monospace;
+					font-size: 1.5rem;
+					padding: 0.5rem;
+					margin: 1rem;
+					width: 17%
+				}
 			}
 		}
 	}

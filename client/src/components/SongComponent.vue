@@ -23,12 +23,43 @@
 			</button>
 			<button
 				:class="['delete-button']"
+				@click="displayDeleteConf = true"
 			>
 				Delete
 			</button>
 		</div>
 		
-		<EditSong :display="displayEditTab" :songToEdit="song" />
+		<transition name="fade">
+			<EditSong :display="displayEditTab" :songToEdit="song" />
+		</transition>
+		
+		<transition name="bounce">
+			<div
+				class="delete-confirmation"
+				v-if="displayDeleteConf"
+			>
+				<div
+					class="delete-conf-content"
+					@click="displayDeleteConf = false"
+				>
+					<span class="delete-warning">Delete {{this.song.song}}?</span>
+					<div class="delete-btn-group">
+						<button
+							class="delete-yes"
+							@click="deleteCurrentSong"
+						>
+							Yes
+						</button>
+						<button
+							class="delete-no"
+							@click="displayDeleteConf = false"
+						>
+							No
+						</button>
+					</div>
+				</div>
+			</div>
+		</transition>
 	</div>
 </template>
 
@@ -39,7 +70,8 @@ export default {
 	data() {
 		return {
 			name: 'Song Component',
-			displayEditTab: false
+			displayEditTab: false,
+			displayDeleteConf: false
 		}
 	},
 	props: {
@@ -62,6 +94,11 @@ export default {
 	},
 	components: {
 		EditSong,
+	},
+	methods: {
+		deleteCurrentSong() {
+			alert(`DELETE ${this.song.song}`);
+		}
 	}
 }
 </script>
