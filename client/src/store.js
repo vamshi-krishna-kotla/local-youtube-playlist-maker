@@ -37,11 +37,21 @@ var store = new Vuex.Store({
         },
         putNewSong( state, payload ) {
             state.songs.push(payload.song);
+        },
+        putEditedSong( state, payload ) {
+            var index = state.songs.indexOf(state.songs.find( song => song.song === payload.key ));
+            state.songs[index].song = payload.song.song;
+            state.songs[index].artist = payload.song.artist;
+            state.songs[index].link = payload.song.link;
+            state.songs[index].genre = payload.song.genre;
         }
     },
     actions: {
         getSongs() {
             this.commit('getSongsFromServer');
+        },
+        putEditedSong( state, payload ) {
+            state.commit('putEditedSong', payload);
         }
     },
     getters: {
