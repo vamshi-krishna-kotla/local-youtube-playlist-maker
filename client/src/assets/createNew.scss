@@ -5,7 +5,7 @@
 		border: 2px solid rgba($color: #09139e, $alpha: 0.7);
 		border-radius: 5px;
 		margin: 2.5rem auto 0;
-		padding: 2.5rem;
+		padding: 2rem;
 		width: 60%;
 
 		tr {
@@ -15,6 +15,13 @@
 				text-align: center;
 
 				&.genre-list {
+					h1 {
+						color: rgba($color: #09139e, $alpha: 0.8);
+						font-family: sans-serif;
+						font-size: 1.75rem;
+						margin: 0.5rem auto 0.3rem;
+					}
+
 					.genre {
 						border: 0.5px solid rgba($color: #09139e, $alpha: 0.5);
 						border-radius: 0.75rem;

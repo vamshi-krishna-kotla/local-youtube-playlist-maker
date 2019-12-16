@@ -7,7 +7,7 @@
 				<tr>
 					<td colspan="2">
 						<input 
-							placeholder="Name" 
+							placeholder="Song Title" 
 							type="text" 
 							v-model="songName"
 						/>
@@ -16,7 +16,7 @@
 				<tr>
 					<td colspan="2">
 						<input 
-							placeholder="URL" 
+							placeholder="Please use embed URL" 
 							type="text" 
 							v-model="songURL"
 						/>
@@ -33,6 +33,7 @@
 				</tr>
 				<tr>
 					<td class="genre-list" colspan="2">
+						<h1>Genres</h1>
 						<span
 							v-for="(genre,index) in genreList"
 							@click="genre.isSelected = !genre.isSelected"
