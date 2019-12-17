@@ -4,17 +4,15 @@
 			<li 
 				class = playlist-item
 				v-for="(item, index) of this.playlists" 
+				@click =" displayPlaylist = index "
 				:key="index"
 			>
-				<div 
-					class = "playlist-title" 
-					@click =" displayPlaylist = index "
-				>
+				<div class = "playlist-title" >
 					<span class="title">{{item.title.toUpperCase()}}</span>
 				</div>
 				<div 
 					class="playlist-content" 
-					v-if="displayPlaylist == index"
+					v-show="displayPlaylist == index"
 				>
 					<div 
 						v-for ="songItem in item.songs"
