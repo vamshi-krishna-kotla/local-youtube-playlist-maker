@@ -2,7 +2,7 @@
 	<div class="playlist-comp">
 		<ul class="playlists">
 			<li 
-				class = playlist-item
+				class = "playlist-item"
 				v-for="(item, index) of this.playlists" 
 				@click =" displayPlaylist = index "
 				:key="index"
