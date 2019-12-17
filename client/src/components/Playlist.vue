@@ -67,7 +67,12 @@ export default {
 	},
 	methods: {
 		findSong(songItem) {
-			return this.$store.state.songs.find( element => element.song == songItem)
+			if (this.$store.state.songs.length > 0) {
+				return this.$store.state.songs.find( element => element.song == songItem)
+			}
+			else {
+				return { link: '' }
+			}
 		},
 		createNew() {
 			alert('Create New Playlist');
