@@ -47,7 +47,7 @@ export default {
 	data() {
 		return {
 			name: 'Playlist Component',
-			displayPlaylist: -1,
+			displayPlaylist: 0,
 		}
 	},
 	computed: {
