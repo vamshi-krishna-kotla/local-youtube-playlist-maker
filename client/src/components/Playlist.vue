@@ -9,6 +9,12 @@
 			>
 				<div class = "playlist-title" >
 					<span class="title">{{item.title.toUpperCase()}}</span>
+					<span 
+						class="remove-playlist"
+						@click="removePlaylist(index)"
+					>
+						&#x2796;
+					</span>
 				</div>
 				<div 
 					class="playlist-content" 
@@ -76,6 +82,9 @@ export default {
 		},
 		createNew() {
 			alert('Create New Playlist');
+		},
+		removePlaylist( playlistIndex ) {
+			alert(`Remove Playlist ${playlistIndex}`);
 		}
 	}
 }

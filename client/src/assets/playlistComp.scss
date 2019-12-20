@@ -15,16 +15,26 @@
 				box-shadow: 0 0.2rem 0.2rem rgba($color: #09139e, $alpha: 0.5);
 			}
 
-			.playlist-title {	
+			.playlist-title {
+				position: relative;
+
 				.title {
 					font-size: 1.25rem;
+				}
+
+				.remove-playlist {
+					position: absolute;
+					right: 1rem;
 				}
 			}
 
 			.playlist-content {
+				border-top: 1px solid rgba($color: #000, $alpha: 0.4);
 				display: flex;
 				justify-content: space-between;
+				margin-top: 1rem;
 				overflow: auto;
+				padding-top: 1rem;
 
 				.playlist-content-song {
 					display: inline;
