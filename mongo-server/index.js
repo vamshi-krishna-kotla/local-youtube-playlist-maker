@@ -17,5 +17,6 @@ app.use('/', homeRouter);
 app.use('/songs', songsRouter);
 
 app.listen(PORT, () => {
-	console.log(`Mongo server running at http://localhost:${PORT}/`)
+	console.log(`Please run "mongod" in separate 'cmd' to initiate mongo-server`);
+	console.log(`Mongo server running at http://localhost:${PORT}/`);
 });
