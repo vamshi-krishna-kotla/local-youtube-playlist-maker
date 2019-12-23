@@ -44,16 +44,20 @@
 				Create New Playlist
 			</button>
 		</div>
+		<CreatePlaylist v-if="createPlaylist" />
 	</div>
 </template>
 
 <script>
+import CreatePlaylist from './CreatePlaylist';
+
 export default {
 	name: 'playlist',
 	data() {
 		return {
 			name: 'Playlist Component',
 			displayPlaylist: 0,
+			createPlaylist: false
 		}
 	},
 	computed: {
@@ -68,6 +72,7 @@ export default {
 		}
 	},
 	components: {
+		CreatePlaylist,
 	},
 	mounted() {
 	},
@@ -81,7 +86,7 @@ export default {
 			}
 		},
 		createNew() {
-			alert('Create New Playlist');
+			this.createPlaylist = true;
 		},
 		removePlaylist( playlistIndex ) {
 			alert(`Remove Playlist ${playlistIndex}`);
