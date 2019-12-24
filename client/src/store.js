@@ -51,7 +51,13 @@ var store = new Vuex.Store({
              * var index = state.songs.indexOf(state.songs.find( song => song.song === payload.song ));
              * state.songs.splice(index, 1);
              */
-        } 
+        },
+        addToPlaylists( state, payload ) {
+            state.playlists.push(payload);
+        },
+        removeOnePlaylist( state, payload ) {
+            state.playlists.splice(payload.index,1);
+        }
     },
     actions: {
         getSongs() {
@@ -62,6 +68,12 @@ var store = new Vuex.Store({
         },
         deleteSong( state, payload ) {
             state.commit('deleteCurrentSong', payload);
+        },
+        addNewPlaylist( state, payload) {
+            state.commit('addToPlaylists', payload);
+        },
+        removePlaylist( state, payload ) {
+            state.commit('removeOnePlaylist', payload);
         }
     },
     getters: {

@@ -9,21 +9,46 @@
 		<div class="song-lists">
 			<div class="available-song-list">
 				<h2 class="title">Available songs</h2>
+				<hr />
 				<h3 
 					:class="['available-song']"
 					v-for="(availableItem) in availableSongs"
 					:key="availableItem.song"
 				>
-					{{`${availableItem.song.toUpperCase()} by ${availableItem.artist}`}}
+					<span class="song-title">{{availableItem.song.toUpperCase()}}</span>
+					-
+					<span class="song-artist">{{availableItem.artist}}</span>
+					<span 
+						class="add-song"
+						@click="addToPlaylist(availableItem.song)"
+					>
+						&#x271A;
+					</span>
 				</h3>
 			</div>
 			<div class="selected-song-list">
-				<h1>selectedsongs</h1>
+				<h2 class="title">Selected songs</h2>
+				<hr />
+				<h3 
+					:class="['selected-song']"
+					v-for="(selectedItem) in selectedSongs"
+					:key="selectedItem.song"
+				>
+					<span class="song-title">{{selectedItem}}</span>
+					<span 
+						class="remove-song"
+						@click="removeFromPlaylist(selectedItem)"
+					>
+						-
+					</span>
+				</h3>
 			</div>
 		</div>
-		<div class="done-btn-container">
+		<div class="done-container">
+			<input type="text" v-model="newPlaylistName" placeholder="Enter the title of the playlist"/>
 			<button
 				class="done-button"
+				@click="createNewPlaylist"
 			>
 				Done
 			</button>
@@ -36,12 +61,39 @@ export default {
 	name: 'create-playlist',
 	data() {
 		return {
-			name: 'Create Playlist Component'
+			name: 'Create Playlist Component',
+			newPlaylistName: '',
+			selectedSongs: []
 		}
 	},
 	methods: {
 		exit() {
 			this.$parent.createPlaylist = false;
+		},
+		addToPlaylist( song ) {
+			if( !this.selectedSongs.find( i => i==song) ) {
+				this.selectedSongs.push(song);
+			}
+		},
+		removeFromPlaylist( song ) {
+			this.selectedSongs = this.selectedSongs.filter( s => s!==song);
+		},
+		createNewPlaylist() {
+			if( this.selectedSongs.length == 0 ) {
+				window.alert('Please select songs to add to playlist');
+			}
+			else if( this.newPlaylistName.length == 0 ) {
+				window.alert('Please select a valid title for the playlist');
+			}
+			else {	
+				var newPlaylist = {
+					'title': this.newPlaylistName,
+					'songs': this.selectedSongs
+				}
+				this.$store.dispatch('addNewPlaylist',newPlaylist);
+
+				this.exit();
+			}
 		}
 	},
 	computed: {
@@ -53,60 +105,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.create-playlist-container {
-	border: 1px solid rgba($color: #09139e, $alpha: 1);
-	border-radius: 0.3rem;
-	margin: 1rem;
-	padding: 0 0 1rem 0;
-	position: relative;
-
-	.exit-button {
-		border-radius: 50%;
-		font-size: 1rem;
-		position: absolute;
-		right: 0rem;
-		top: -2rem;
-
-		&:focus {
-			outline: none;
-		}
-	}
-
-	.song-lists {
-		display: flex;
-		flex-direction: row;
-		justify-content: space-around;
-		margin: auto;
-		position: relative;
-		width: 90%;
-
-		.available-song-list, .selected-song-list {
-			border: 1px solid rgba($color: #00064e, $alpha: 0.6);
-			display: inline-block;
-			margin: 1rem;
-			padding: 1rem;
-			position: relative;
-			width: 45%;
-		}
-
-		.available-song-list .title{
-			color: rgba($color: #09139e, $alpha: 1);
-		}
-		.available-song-list .available-song {
-			border-bottom: 1px solid rgba($color: #000, $alpha: 0.6);
-		}
-	}
-
-	.done-btn-container {
-		display: block;
-		padding: 0.65rem 0 0.35rem;
-		text-align: center;
-
-		.done-button{
-			font-family: monospace;
-			font-size: 1.5rem;
-			padding: 0 1rem;
-		}
-	}
-}
+	@import '../assets/createNewPlaylist.scss';
 </style>

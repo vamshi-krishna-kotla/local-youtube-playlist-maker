@@ -89,7 +89,7 @@ export default {
 			this.createPlaylist = true;
 		},
 		removePlaylist( playlistIndex ) {
-			alert(`Remove Playlist ${playlistIndex}`);
+			this.$store.dispatch('removePlaylist', { index: playlistIndex });
 		}
 	}
 }
