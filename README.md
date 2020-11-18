@@ -1,4 +1,4 @@
-# YouTube playlist Maker
+# Local YouTube playlist maker
 A localhost web application to create and store songs(videos) into a playlist
 
 It was designed to practice Vue with MongoDB, NodeJS; **this works only on localhost, not remotely hosted anywhere**
