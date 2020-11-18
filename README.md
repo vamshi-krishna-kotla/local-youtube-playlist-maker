@@ -36,7 +36,7 @@ It was designed to practice Vue with MongoDB, NodeJS; **this works only on local
 		node index
 		```
 
-2. Start the client (`cd client`)
+2. Start the client
 	* Vue based application to show basic features of the framework
 
 		```
